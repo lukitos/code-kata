@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as fishAction from './actions/fishAction';
-import Main from './components/Main';
+// import Main from './components/Main';
+import Species from './components/Species';
 import './App.css';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Main />
+        <Species stype="flathead" stitle="Flathead Catfish" />
       </div>
     );
   }
