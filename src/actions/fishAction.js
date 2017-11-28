@@ -3,16 +3,6 @@ import config from '../config';
 
 const API_URL = config.API_URL;
 
-function compare(a, b) {
-  let a_weight = a.length * a.girth * a.girth / 800;
-  let b_weight = b.length * b.girth * b.girth / 800;
-  if (a_weight < b_weight)
-    return 1;
-  if (a_weight > b_weight)
-    return -1;
-  return 0;
-}
-
 function buildLeaderboard(data) {
   if(data.hasOwnProperty('isLoading')){
     console.log('Is loading - do nothing');
@@ -20,11 +10,11 @@ function buildLeaderboard(data) {
   } else {
     console.log('in buildLeaderboard >>> data', data);
     let newFish = data.map(fish => {
-      let weight = { weight: fish.length * fish.girth * fish.girth / 800 };
+      let weight = { weight: Math.round(fish.length * fish.girth * fish.girth / 800) };
       let updatedFish = {...fish, ...weight};
       return updatedFish;
     });
-    let sortedFish = newFish.sort(compare);
+    let sortedFish = newFish.sort((a,b) => b.weight - a.weight);
     let result = sortedFish.slice(0, 5);
     console.log('in buildLeaderboard >>> result', result);
     return result;

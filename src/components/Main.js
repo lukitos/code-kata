@@ -46,11 +46,11 @@ const Main = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.fish.map(n => {
+          {props.fish.map((n, i) => {
             return (
-              <TableRow key={n.id}>
-                <TableCell numeric>{n.id}</TableCell>
-                <TableCell numeric>{n.angler}</TableCell>
+              <TableRow key={i}>
+                <TableCell numeric>{i+1}</TableCell>
+                <TableCell>{n.angler}</TableCell>
                 <TableCell numeric>{n.weight}</TableCell>
               </TableRow>
             );
