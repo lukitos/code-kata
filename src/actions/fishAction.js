@@ -19,9 +19,13 @@ function buildLeaderboard(data) {
     return null;
   } else {
     console.log('in buildLeaderboard >>> data', data);
-    let sortedFish = data.sort(compare);
-    let result = [];
-    result = sortedFish.slice(0, 5);
+    let newFish = data.map(fish => {
+      let weight = { weight: fish.length * fish.girth * fish.girth / 800 };
+      let updatedFish = {...fish, ...weight};
+      return updatedFish;
+    });
+    let sortedFish = newFish.sort(compare);
+    let result = sortedFish.slice(0, 5);
     console.log('in buildLeaderboard >>> result', result);
     return result;
   }
