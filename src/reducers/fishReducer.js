@@ -10,7 +10,7 @@ export default (state=initialState, action) => {
         isLoading: true
       }];
     case 'FISH_FULFILLED':
-      return [...action.payload.data];
+      return action.payload;
     case 'FISH_REJECTED':
       return action.payload;
 

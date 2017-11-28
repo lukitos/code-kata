@@ -32,6 +32,7 @@ const data = [
 
 const Main = (props) => {
   console.log('in Main >>> props', props);
+
   const { classes } = props;
 
   return (
@@ -64,6 +65,10 @@ const Main = (props) => {
   );
 
 }
+
+Main.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 function mapStateToProps(state, props) {
   return {
